@@ -14,6 +14,10 @@ import android.net.Uri;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +50,7 @@ public class Ringtones {
         };
     }
 
-    public Ringtone[] getRingtones(String type) {
+    public JSONArray getRingtones(String type) throws JSONException {
         Log.d(TAG, "getRingtones: " + type);
 
         int ringtoneType;
@@ -66,7 +70,7 @@ public class Ringtones {
         };
 
         if (activity == null) {
-            return new Ringtone[0];
+            return new JSONArray();
         }
 
         Context context = activity.getApplicationContext();
@@ -74,7 +78,7 @@ public class Ringtones {
         ringtoneManager.setType(ringtoneType);
 
         Cursor cursor = ringtoneManager.getCursor();
-        List<Ringtone> ringtones = new ArrayList<>();
+        JSONArray ringtones = new JSONArray();
 
         if (cursor.moveToFirst()) {
             do {
@@ -82,17 +86,20 @@ public class Ringtones {
                 Uri uri = ringtoneManager.getRingtoneUri(position);
                 String title = ringtoneManager.getRingtone(position).getTitle(context);
 
-                ringtones.add(new Ringtone(title, uri.toString()));
+                JSONObject ringtone = new JSONObject();
+                ringtone.put("title", title);
+                ringtone.put("uri", uri.toString());
+                ringtones.put(ringtone);
             } while (cursor.moveToNext());
         } else {
             System.out.println("No ringtones found.");
         }
 
         cursor.close();
-        return ringtones.toArray(new Ringtone[0]);
+        return ringtones;
     }
 
-    public Ringtone getDefaultRingtone(String type) {
+    public JSONObject getDefaultRingtone(String type) throws JSONException {
         Log.d(TAG, "getDefaultRingtone: " + type);
 
         int ringtoneType;
@@ -133,6 +140,10 @@ public class Ringtones {
         }
 
         String title = RingtoneManager.getRingtone(context, defaultUri).getTitle(context);
-        return new Ringtone(title, defaultUri.toString());
+        JSONObject ringtone = new JSONObject();
+        ringtone.put("title", title);
+        ringtone.put("uri", defaultUri.toString());
+
+        return ringtone;
     }
 }

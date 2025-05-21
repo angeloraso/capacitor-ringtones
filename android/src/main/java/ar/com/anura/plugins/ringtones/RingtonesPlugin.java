@@ -8,6 +8,8 @@ import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
 import com.getcapacitor.annotation.CapacitorPlugin;
 
+import org.json.JSONException;
+
 @CapacitorPlugin(name = "Ringtones")
 public class RingtonesPlugin extends Plugin {
 
@@ -31,7 +33,7 @@ public class RingtonesPlugin extends Plugin {
     }
 
     @PluginMethod
-    public void getRingtones(PluginCall call) {
+    public void getRingtones(PluginCall call) throws JSONException {
         if (getActivity().isFinishing()) {
             call.reject("Ringtones plugin error: App is finishing");
             return;
@@ -45,7 +47,7 @@ public class RingtonesPlugin extends Plugin {
     }
 
     @PluginMethod
-    public void getDefaultRingtone(PluginCall call) {
+    public void getDefaultRingtone(PluginCall call) throws JSONException {
         if (getActivity().isFinishing()) {
             call.reject("Ringtones plugin error: App is finishing");
             return;
