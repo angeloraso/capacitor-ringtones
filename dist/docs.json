@@ -1,0 +1,138 @@
+{
+  "api": {
+    "name": "RingtonesPlugin",
+    "slug": "ringtonesplugin",
+    "docs": "",
+    "tags": [],
+    "methods": [
+      {
+        "name": "getRingerMode",
+        "signature": "() => Promise<{ mode: MODE; }>",
+        "parameters": [],
+        "returns": "Promise<{ mode: MODE; }>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [
+          "MODE"
+        ],
+        "slug": "getringermode"
+      },
+      {
+        "name": "getRingtones",
+        "signature": "(data?: { type: TYPE; } | undefined) => Promise<{ ringtones: Ringtone[]; }>",
+        "parameters": [
+          {
+            "name": "data",
+            "docs": "",
+            "type": "{ type: TYPE; } | undefined"
+          }
+        ],
+        "returns": "Promise<{ ringtones: Ringtone[]; }>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [
+          "Ringtone",
+          "TYPE"
+        ],
+        "slug": "getringtones"
+      },
+      {
+        "name": "getDefaultRingtone",
+        "signature": "(data?: { type: TYPE; } | undefined) => Promise<{ ringtone: Ringtone; }>",
+        "parameters": [
+          {
+            "name": "data",
+            "docs": "",
+            "type": "{ type: TYPE; } | undefined"
+          }
+        ],
+        "returns": "Promise<{ ringtone: Ringtone; }>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [
+          "Ringtone",
+          "TYPE"
+        ],
+        "slug": "getdefaultringtone"
+      }
+    ],
+    "properties": []
+  },
+  "interfaces": [
+    {
+      "name": "Ringtone",
+      "slug": "ringtone",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "title",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "uri",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "enums": [
+    {
+      "name": "MODE",
+      "slug": "mode",
+      "members": [
+        {
+          "name": "NORMAL",
+          "value": "'normal'",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "SILENT",
+          "value": "'silent'",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "VIBRATE",
+          "value": "'vibrate'",
+          "tags": [],
+          "docs": ""
+        }
+      ]
+    },
+    {
+      "name": "TYPE",
+      "slug": "type",
+      "members": [
+        {
+          "name": "CALL",
+          "value": "'call'",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "ALARM",
+          "value": "'alarm'",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "NOTIFICATION",
+          "value": "'notification'",
+          "tags": [],
+          "docs": ""
+        }
+      ]
+    }
+  ],
+  "typeAliases": [],
+  "pluginConfigs": []
+}
