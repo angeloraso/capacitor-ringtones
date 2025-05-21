@@ -1,3 +1,24 @@
+export enum MODE {
+  NORMAL = 'normal',
+  SILENT = 'silent',
+  VIBRATE = 'vibrate',
+}
+
+export enum TYPE {
+  CALL = 'call',
+  ALARM = 'alarm',
+  NOTIFICATION = 'notification'
+}
+
+export interface Ringtone {
+  title: string;
+  uri: string;
+}
+
 export interface RingtonesPlugin {
-  echo(options: { value: string }): Promise<{ value: string }>;
+  getRingerMode(): Promise<{ mode: MODE }>;
+
+  getRingtones(data?: {type: TYPE}): Promise<{ ringtones: Ringtone[] }>;
+
+  getDefaultRingtone(data?: {type: TYPE}): Promise<{ ringtone: Ringtone }>;
 }
