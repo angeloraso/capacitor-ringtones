@@ -1,6 +1,6 @@
 {
   "name": "@anuradev/capacitor-ringtones",
-  "version": "1.0.0",
+  "version": "7.0.0",
   "description": "Capacitor plugin to get ringtones info",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
